@@ -31,6 +31,15 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+
+  $scope.map = {
+    center: {
+      latitude: 45,
+      longitude: -73
+    },
+    zoom: 8
+  };
 })
 
 .controller('PlaylistsCtrl', function($scope) {

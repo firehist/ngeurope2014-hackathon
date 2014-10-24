@@ -13,32 +13,11 @@
   <ion-tabs class="tabs-positive tabs-icon-only custom-tabs-search">
 
     <ion-tab title="Home" icon-on="ion-android-drawer" icon-off="ion-android-drawer">
-      <ion-content class="has-search">
-          <ion-list ng-controller="SearchListCtrl"
-                    show-delete="shouldShowDelete"
-                    show-reorder="shouldShowReorder"
-                    can-swipe="listCanSwipe">
-              <ion-item ng-repeat="item in items"
-                        class="item-thumbnail-left">
-
-                  <img ng-src="{{item.img}}">
-                  <h2>{{item.nom}}</h2>
-                  <p ng-bind-html="item.description"></p>
-                  <ion-option-button class="button-positive"
-                                     ng-click="share(item)">
-                      Share
-                  </ion-option-button>
-                  <ion-option-button class="button-info"
-                                     ng-click="edit(item)">
-                      Edit
-                  </ion-option-button>
-                  <ion-delete-button class="ion-minus-circled"
-                                     ng-click="items.splice($index, 1)">
-                  </ion-delete-button>
-                  <ion-reorder-button class="ion-navicon"
-                                      on-reorder="reorderItem(item, $fromIndex, $toIndex)">
-                  </ion-reorder-button>
-
+      <ion-content scroll="true" class="has-search">
+          <ion-list ng-controller="SearchListCtrl" class="searchList">
+              <ion-item ng-repeat="item in items" class="">
+                  <h2 ng-bind="item.nom"></h2>
+                  <p text-from-html="item.description"></p>
               </ion-item>
           </ion-list>
       </ion-content>

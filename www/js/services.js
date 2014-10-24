@@ -210,7 +210,7 @@ angular.module('starter.services', [])
         }
         return {
             decodeHtmlEntities: function (text) {
-                return html_entity_decode(text);
+                return text && html_entity_decode(text) || '';
             }
         };
     })
@@ -228,14 +228,14 @@ angular.module('starter.services', [])
                     var resultArray = [];
                     for (var i = 0 ; i < actArray.length ; i++ ) {
                         var act = actArray[i];
-                        act.nom = utils.decodeHtmlEntities(act.nom);
-                        if (act.description) console.log(act.description);
-                        act.description = utils.decodeHtmlEntities(act.description);
-//                        resultArray.push({
-//                            nom: htmlEntities(act.nom),
-//                            description
-//                        });
-                        resultArray.push(act);
+                        console.log("avant modifs", act);
+                        resultArray.push({
+                            nom: utils.decodeHtmlEntities(act.nom),
+                            description: utils.decodeHtmlEntities(act.description),
+                            lat: act.lat,
+                            lon: +act.lon
+                        });
+                        console.log("après modifs", resultArray[resultArray.length - 1]);
                     }
                     return resultArray;
                 });

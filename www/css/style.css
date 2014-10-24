@@ -17,3 +17,7 @@
 .custom-tabs-search .has-search {
   top: 130px;
 }
+
+.searchList ion-item p {
+    white-space: normal;
+}

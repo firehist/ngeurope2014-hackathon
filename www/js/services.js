@@ -217,7 +217,6 @@ angular.module('starter.services', [])
 
     .factory('activities', function($http, $q, utils) {
         var list = $q.when([]);
-        var current = null;
         var service = {
             list: function() {
                 return list;
@@ -245,9 +244,6 @@ angular.module('starter.services', [])
                     return resultArray;
                 });
                 list = searchResult;
-            },
-            select: function (act) {
-                current = act;
             }
         };
         service.search();

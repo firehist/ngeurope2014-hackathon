@@ -49,7 +49,8 @@ angular.module('starter', [
         url: "/search",
         views: {
           'menuContent': {
-            templateUrl: "templates/search.html"
+            templateUrl: "templates/search.html",
+            controller: 'SearchCtrl'
           }
         }
       })

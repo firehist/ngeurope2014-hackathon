@@ -32,7 +32,8 @@
 
     <ion-tab title="Details" icon-on="ion-information-circled" icon-off="ion-information-circled">
       <ion-content>
-          détails
+          <h2 ng-bind="current.nom"></h2>
+          <div ng-bind-html="current.description"></div>
       </ion-content>
     </ion-tab>
 

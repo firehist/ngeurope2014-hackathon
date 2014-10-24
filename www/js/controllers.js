@@ -56,12 +56,15 @@ angular.module('starter.controllers', [])
     .controller('PlaylistCtrl', function ($scope, $stateParams) {
     })
 
-    .controller('SearchListCtrl', function ($scope, activities, $ionicTabsDelegate) {
+    .controller('SearchCtrl', function ($scope, activities, $ionicTabsDelegate) {
+        $scope.selectActivity = function (act) {
+            $scope.current = act;
+            $ionicTabsDelegate.select(2);
+        };
+    })
+
+    .controller('SearchListCtrl', function ($scope, activities) {
         activities.list().then(function (result) {
             $scope.items = result;
         });
-        $scope.selectActivity = function (act) {
-            activities.select(act);
-            $ionicTabsDelegate.select(2);
-        };
     })

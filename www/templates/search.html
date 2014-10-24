@@ -12,10 +12,11 @@
 
   <ion-tabs class="tabs-positive tabs-icon-only custom-tabs-search">
 
-    <ion-tab title="Home" icon-on="ion-android-drawer" icon-off="ion-android-drawer">
+    <ion-tab title="Search" icon-on="ion-android-drawer" icon-off="ion-android-drawer">
       <ion-content scroll="true" class="has-search">
           <ion-list ng-controller="SearchListCtrl" class="searchList">
-              <ion-item ng-repeat="item in items" class="">
+              <ion-item ng-repeat="item in items" class=""
+                      ng-click="selectActivity(item)">
                   <h2 ng-bind="item.nom"></h2>
                   <p text-from-html="item.description"></p>
               </ion-item>
@@ -23,9 +24,15 @@
       </ion-content>
     </ion-tab>
 
-    <ion-tab title="About" icon-on="ion-android-locate" icon-off="ion-android-locate">
+    <ion-tab title="Map" icon-on="ion-android-locate" icon-off="ion-android-locate">
       <ion-content>
         <ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+      </ion-content>
+    </ion-tab>
+
+    <ion-tab title="Details" icon-on="ion-information-circled" icon-off="ion-information-circled">
+      <ion-content>
+          détails
       </ion-content>
     </ion-tab>
 

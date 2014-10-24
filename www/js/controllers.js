@@ -56,8 +56,12 @@ angular.module('starter.controllers', [])
     .controller('PlaylistCtrl', function ($scope, $stateParams) {
     })
 
-    .controller('SearchListCtrl', function ($scope, activities) {
-        activities.search().then(function (result) {
+    .controller('SearchListCtrl', function ($scope, activities, $ionicTabsDelegate) {
+        activities.list().then(function (result) {
             $scope.items = result;
         });
+        $scope.selectActivity = function (act) {
+            activities.select(act);
+            $ionicTabsDelegate.select(2);
+        };
     })

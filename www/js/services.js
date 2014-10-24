@@ -215,31 +215,41 @@ angular.module('starter.services', [])
         };
     })
 
-    .factory('activities', function($http, utils) {
-        return {
+    .factory('activities', function($http, $q, utils) {
+        var list = $q.when([]);
+        var current = null;
+        var service = {
+            list: function() {
+                return list;
+            },
             search: function () {
                 var token = 'd23bd31f3d85df79c29a39c031c1012f476b68e83b80a8c99121eb6261ca7475';
                 var url = 'https://api.paris.fr/api/data/1.4/QueFaire/get_activities/?token='
                         + token
                         + '&cid=20&tag=3&created=0&start=0&end=0&offset=0&limit=10';
                 var apiResult = $http.get(url);
-                var serviceResult = apiResult.then(function (response) {
+                var searchResult = apiResult.then(function (response) {
                     var actArray = response.data.data;
                     var resultArray = [];
                     for (var i = 0 ; i < actArray.length ; i++ ) {
                         var act = actArray[i];
-                        console.log("avant modifs", act);
+//                        console.log("avant modifs", act);
                         resultArray.push({
                             nom: utils.decodeHtmlEntities(act.nom),
                             description: utils.decodeHtmlEntities(act.description),
                             lat: act.lat,
                             lon: +act.lon
                         });
-                        console.log("après modifs", resultArray[resultArray.length - 1]);
+//                        console.log("après modifs", resultArray[resultArray.length - 1]);
                     }
                     return resultArray;
                 });
-                return serviceResult;
+                list = searchResult;
+            },
+            select: function (act) {
+                current = act;
             }
         };
+        service.search();
+        return service;
     })

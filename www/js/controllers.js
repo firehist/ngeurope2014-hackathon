@@ -58,6 +58,6 @@ angular.module('starter.controllers', [])
 
     .controller('SearchListCtrl', function ($scope, activities) {
         activities.search().then(function (result) {
-            $scope.items = result.data.data;
+            $scope.items = result;
         });
     })

@@ -6,8 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic',
-    'starter.controllers',
-    'starter.services',
+  'starter.controllers',
+  'starter.services',
   'google-maps'.ns()
 ])
 
